@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_02_125212) do
+ActiveRecord::Schema.define(version: 2020_07_02_150312) do
 
   create_table "categories", force: :cascade do |t|
     t.string "name"
@@ -41,6 +41,8 @@ ActiveRecord::Schema.define(version: 2020_07_02_125212) do
     t.integer "game_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "creator_id"
+    t.index ["creator_id"], name: "index_mods_on_creator_id"
     t.index ["game_id"], name: "index_mods_on_game_id"
   end
 
@@ -73,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_07_02_125212) do
   add_foreign_key "comments", "mods"
   add_foreign_key "comments", "users"
   add_foreign_key "mods", "games"
+  add_foreign_key "mods", "users", column: "creator_id"
   add_foreign_key "mods_categories", "categories"
   add_foreign_key "mods_categories", "mods"
   add_foreign_key "users_downloads", "mods"
