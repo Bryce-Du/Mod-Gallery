@@ -1,2 +1,0 @@
-class UserDownloadsController < ApplicationController
-end
