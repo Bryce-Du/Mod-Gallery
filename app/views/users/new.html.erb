@@ -1,1 +1,5 @@
-<h1></h1>
+<h1>Login</h1>
+<%= form_with model: @user do |f| %>
+    <%= f.text_field :username %>
+    <%= f.password_field :password %>
+<%end%>
