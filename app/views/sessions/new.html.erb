@@ -1,7 +1,6 @@
-<h1>Signup</h1>
-<%= form_with @user do |f| %>
+<h1>Login</h1>
+<%= form_with model: @user do |f| %>
     Username: <%= f.text_field :username %><br>
     Password: <%= f.password_field :password %><br>
-    Confirm Password: <%= f.password_field :password_confirmation %><br>
     <%= f.submit %>
 <%end%>
