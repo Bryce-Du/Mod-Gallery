@@ -1,0 +1,8 @@
+<% byebug %>
+<% if object.errors.any? %>
+    <ul>
+        <% object.errors.full_messages do |message| %>
+            <li><%= message %></li>
+        <%end%>
+    </ul>
+<% end %>

@@ -1,7 +1,7 @@
 <h1>Signup</h1>
-<%= form_with @user do |f| %>
-    Username: <%= f.text_field :username %><br>
-    Password: <%= f.password_field :password %><br>
-    Confirm Password: <%= f.password_field :password_confirmation %><br>
+<%= bootstrap_form_with(model: @user, local: true) do |f| %>
+    <div class="row"><%= f.text_field :username %></div>
+    <div class="row"><%= f.password_field :password %></div>
+    <div class="row"><%= f.password_field :password_confirmation, label: "Confirm Password:" %></div>
     <%= f.submit %>
 <%end%>
