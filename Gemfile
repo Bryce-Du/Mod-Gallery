@@ -54,3 +54,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bootstrap', '~> 4.5.0'
 gem "bootstrap_form", "~> 4.0"
+
+gem 'omniauth'
+gem 'omniauth-github'
+gem 'dotenv-rails'
