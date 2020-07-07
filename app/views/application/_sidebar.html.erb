@@ -1,14 +1,14 @@
 <div class="col-2 mh-100 overflow-auto py-2 bg-info" align="right">
     <ul class="nav flex-column">
-        <li class="nav-item">
-            <h5><a class="nav-link text-white" href="/games">Browse Games</a></h5>
-        </li>
-        <li class="nav-item">
-            <h5><a class="nav-link text-white" href="#">Browse Mods</a></h5>
-        </li>
+        <li class="nav-item"><h4 class="text-dark">Browse Games</h4></li>
+        <li class="nav-item"><h6><a class="text-white" href="/games">Browse All Games</a></h6></li>
+        <li class="nav-item"><h4 class="text-dark">Browse Mods</h4></li>
+        <li class="nav-item"><h6><a class="text-white" href="#">Browse by Game</a></h6></li>
+        <li class="nav-item"><h6><a class="text-white" href="#">Browse by Category</a></h6></li>
         <% if current_user %>
-            <li class="nav-item"><h5><a class="nav-link text-white" href= <%= current_user ? user_path(current_user) : "/" %>>Profile</a></h5></li>
-            <li class="nav-item"><a href="/logout" class="nav-link text-white">Log Out</a></li>
+            <li class="nav-item"><h4 class="text-dark"><%= current_user.username %></h4></li>
+            <li class="nav-item"><h6><a class="text-white" href= <%= user_path(current_user) %>>View Profile</a></h6></li>
+            <li class="nav-item"><h6><a href="/logout" class="text-white">Log Out</a></h6></li>
         <% end %>
     </ul>
 </div>
