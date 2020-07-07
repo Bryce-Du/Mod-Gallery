@@ -1,6 +1,4 @@
 class SessionsController < ApplicationController
-    skip_before_action :verify_authenticity_token, only: [:create_oauth]
-    
     def new
         @user = User.new
     end
@@ -20,8 +18,5 @@ class SessionsController < ApplicationController
         session.delete(:user_id)
         redirect_to root_path
     end
-    def create_oauth
-        
-    end
-
+    
 end
