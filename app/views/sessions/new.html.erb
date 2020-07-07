@@ -1,10 +1,11 @@
 <div class="row">
-    <div class="col-2 ml-5 mt-5 border-right">
+    <div class="col-3 ml-5 mt-5 border-right">
         <h1>Login:</h1>
-        <%= bootstrap_form_with model: @user do |f| %>
-            <div class="row"><%= f.text_field :username %></div>
+        <%= bootstrap_form_with(model: @user, url: login_path) do |f| %>
+            <% @user.valid? %>    
+            <div class="row"><%= f.text_field :username %> </div>
             <div class="row"><%= f.password_field :password %></div>
-            <div class="row"><%= f.submit %></div>
+            <div class="row"><%= f.submit "Log In" %></div>
         <%end%>
     </div>
     <div class="col-2 ml-5 mt-5">

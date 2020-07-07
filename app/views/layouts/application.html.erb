@@ -19,7 +19,7 @@
             <li class="nav-item"><a href="#" class="nav-link">about</a></li>
           </ul>
           <ul class="navbar-nav ml-auto">
-            <% if @user %>
+            <% if session[:user_id] %>
               <li class="nav-item"><a href="/logout" class="nav-link">Log Out</a></li>
             <% else %>
               <li class="nav-item"><a href="/login" class="nav-link">Log In</a></li>
