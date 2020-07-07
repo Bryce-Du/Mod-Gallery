@@ -1,7 +1,19 @@
 <%= bootstrap_form_with(model: mod, url: user_mods_path) do |f| %>
-    <div class="row"><div class="col-2"><%= f.text_field :name %></div></div>
-    <div class="row"><div class="col-2"><%= f.text_field :creator, value: current_user.username, readonly: true %></div></div>
-    <div class="row"><div class="col-2"><%= f.collection_select :game, Game.all, :id, :name, prompt: "Select Game"%></div></div>
+    <div class="row">
+        <div class="col-2">
+            <div class="row"><%= f.text_field :name %></div>
+            <div class="row">
+                <%= f.text_field :creator, value: current_user.username, readonly: true, disabled: true%>
+                <%= f.hidden_field :creator_id, value: current_user.id %>
+            </div>
+            <div class="row"><%= f.collection_select :game_id, Game.all, :id, :name, prompt: "Select Game"%></div>
+        </div>
+        <div class="col-4">
+            <%= f.fields_for :mods_categories do |cat_f| %>
+                <div class="row"><%= cat_f.collection_select :category_id, Category.all, :id, :name, prompt: "Choose up to three Categories that apply." %></div>
+            <% end %>
+        </div>
+    </div>
     <div class="row"><div class="col-6"><%= f.text_area :description %></div></div>
-    <%= f.submit  %>
+    <%= f.submit %>
 <% end %>

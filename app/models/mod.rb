@@ -7,4 +7,5 @@ class Mod < ApplicationRecord
   has_many :mods_categories
   has_many :categories, through: :mods_categories
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
+  accepts_nested_attributes_for :mods_categories
 end

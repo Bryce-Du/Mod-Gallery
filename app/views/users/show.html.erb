@@ -5,5 +5,5 @@
     <% @user.creations.each do |mod| %>
         <li><%= link_to "#{mod.name}", mod_path(mod)%></li>
     <% end %>
+    <a class="btn btn-secondary" href= <%= new_user_mod_path(user_id: current_user.id) %>>Add New Mod</a>
 </ul>
-<%= selected_game_name %>
