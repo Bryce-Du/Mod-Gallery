@@ -2,9 +2,12 @@
     <ul class="nav flex-column">
         <li class="nav-item"><h4 class="text-dark">Browse Games</h4></li>
         <li class="nav-item"><h6><a class="text-white" href="/games">Browse All Games</a></h6></li>
-        <li class="nav-item"><h4 class="text-dark">Browse Mods</h4></li>
-        <li class="nav-item"><h6><a class="text-white" href="/games">Browse by Game</a></h6></li>
-        <li class="nav-item"><h6><a class="text-white" href="#">Browse by Category</a></h6></li>
+        <% if !!selected_game %>
+            
+            <li class="nav-item"><h4 class="text-dark">Browse Mods for <%= selected_game_name %></h4></li>
+            <li class="nav-item"><h6><a class="text-white" href=<%= "/games/#{selected_game.id}" %>>Browse all</a></h6></li>
+            <li class="nav-item"><h6><a class="text-white" href=<%= "/games/#{selected_game.id}/categories" %>>Browse by Category</a></h6></li>
+        <% end %>
         <% if current_user %>
             <li class="nav-item"><h4 class="text-dark"><%= current_user.username %></h4></li>
             <li class="nav-item"><h6><a class="text-white" href= <%= user_path(current_user) %>>View Profile</a></h6></li>

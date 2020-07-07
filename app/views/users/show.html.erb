@@ -1,9 +1,9 @@
 <h1>Profile</h1>
-
-    <h5>Username: <%= @user.username %></h5>
-    <h5>Created Mods:</h5>
-    <ul>
-        <% @user.creations.each do |mod| %>
-            <li><%= link_to "#{mod.name}", mod_path(mod)%></li>
-        <% end %>
-    </ul>
+<h5>Username: <%= @user.username %></h5>
+<h5>Created Mods:</h5>
+<ul>
+    <% @user.creations.each do |mod| %>
+        <li><%= link_to "#{mod.name}", mod_path(mod)%></li>
+    <% end %>
+</ul>
+<%= selected_game_name %>
