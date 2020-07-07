@@ -1,0 +1,9 @@
+<h1>Profile</h1>
+<ul>
+    <li>Username: <%= @user.username %></li>
+    <ul>
+        <h5>Created Mods:</h5>
+        <% @user.creations.each do |mod| %>
+        <li><%= link_to "#{mod.name}", mod_path(mod)%></li>
+    </ul>
+</ul>

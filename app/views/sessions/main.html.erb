@@ -1,1 +1,8 @@
-<h1>Welcome to the Mod Gallery <%= @user ? ", #{@user.username}" : "!" %></h1>
+<div align="center" class="col-6">
+    <h1>Welcome to the Mod Gallery <%= current_user ? ", #{current_user.username}" : "!" %></h1>
+    <% unless current_user %>
+        <p>Currently not logged in, please log in or sign up below, or continue browsing as a guest.</p>
+        <a href="/login" class="btn btn-secondary">Log In</a>
+        <a href="/signup" class="btn btn-secondary">Sign Up</a>
+    <% end %>
+</div>

@@ -18,7 +18,6 @@ class SessionsController < ApplicationController
         end
     end
     def main
-        @user = current_user
     end
     def destroy
         session.delete(:user_id)

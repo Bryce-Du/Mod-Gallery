@@ -1,0 +1,14 @@
+<div class="col-2 mh-100 overflow-auto py-2 bg-info" align="right">
+    <ul class="nav flex-column">
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" href="#">Browse Games</a></h5>
+        </li>
+        <li class="nav-item">
+            <h5><a class="nav-link text-white" href="#">Browse Mods</a></h5>
+        </li>
+        <% if current_user %>
+            <li class="nav-item"><h5><a class="nav-link text-white" href= <%= current_user ? user_path(current_user) : "/" %>>Profile</a></h5></li>
+            <li class="nav-item"><a href="/logout" class="nav-link text-white">Log Out</a></li>
+        <% end %>
+    </ul>
+</div>
