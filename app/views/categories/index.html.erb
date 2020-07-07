@@ -1,0 +1,4 @@
+<h1>Mod Categories for <%= @game.name %></h1>
+<% @categories.each do |category| %>
+    <div class="row"><div class="col-2" align="right"><a class="btn btn-secondary text-light"><%= category.name %></a></div><div class="col-2">Mod Count: <%= category.mod_count(@game) %></div></div><br>
+<% end %>
