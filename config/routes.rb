@@ -14,4 +14,5 @@ Rails.application.routes.draw do
   resources :users do
     resources :mods, only: [:new, :create]
   end
+  resources :games
 end
