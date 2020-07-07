@@ -8,7 +8,7 @@ class User < ApplicationRecord
 
     validates :username, presence: true
     validates :password, presence: true
-    validates :password, length: {in: 8..16}
+    validates :password, length: {in: 8..32}
     validates :password, confirmation: { case_sensitive: true }
 
     def self.find_or_create_by_auth(auth_hash)
