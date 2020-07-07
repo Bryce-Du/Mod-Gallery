@@ -11,5 +11,7 @@ Rails.application.routes.draw do
   post "/signup", to: "users#create"
   resources :users, only: [:show, :edit, :update, :destroy]
   # Resources
-  resources :mods, only: [:show]
+  resources :users do
+    resources :mods, only: [:new, :create]
+  end
 end

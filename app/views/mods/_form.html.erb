@@ -1,0 +1,7 @@
+<%= bootstrap_form_with(model: mod, url: user_mods_path) do |f| %>
+    <div class="row"><div class="col-2"><%= f.text_field :name %></div></div>
+    <div class="row"><div class="col-2"><%= f.text_field :creator, value: current_user.username, readonly: true %></div></div>
+    <div class="row"><div class="col-2"><%= f.collection_select :game, Game.all, :id, :name, prompt: "Select Game"%></div></div>
+    <div class="row"><div class="col-6"><%= f.text_area :description %></div></div>
+    <%= f.submit  %>
+<% end %>
