@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
   # Resources
   resources :users do
-    resources :mods, only: [:new, :create]
+    resources :mods, only: [:new, :create, :index, :show]
   end
   resources :games do
     resources :categories

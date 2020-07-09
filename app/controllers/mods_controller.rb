@@ -2,9 +2,14 @@ class ModsController < ApplicationController
     before_action :set_mod, only: [:show]
     def new
         @mod = Mod.new
-        3.times {@mod.mods_categories.build}
     end
     def create
+        @mod = Mod.new(mod_params)
+        if @mod.save
+            redirect_to user_mod_path(@mod.creator_id, @mod)
+        else
+            render new_user_mod_path(current_user)
+        end
     end
     def show
     end
@@ -19,7 +24,7 @@ class ModsController < ApplicationController
             :creator_id, 
             :game_id,
             :description,
-            mods_categories_attributes: [:category_id]
+            category_ids: []
         )
     end
 end
