@@ -8,8 +8,8 @@ class Mod < ApplicationRecord
   has_many :categories, through: :mods_categories
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
 
-  validates :name, presence: true, uniqueness: true
-  validates :game, presence: true
+  validates :name, presence: true, uniqueness: {scope: :game}
+  validates :game_id, presence: true
   validates :description, presence: true
-  validates 
+  validates :category_ids, presence: {message: "Must select at least one Category."}
 end
