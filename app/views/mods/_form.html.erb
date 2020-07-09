@@ -1,4 +1,4 @@
-<%= bootstrap_form_with(model: mod, url: user_mods_path) do |f| %>
+<%= bootstrap_form_with(model: @mod, local: true, url: user_mods_path) do |f| %>
     <div class="row">
         <div class="col-2">
             <div class="row"><%= f.text_field :name %></div>

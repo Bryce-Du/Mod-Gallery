@@ -8,7 +8,7 @@ class ModsController < ApplicationController
         if @mod.save
             redirect_to user_mod_path(@mod.creator_id, @mod)
         else
-            render new_user_mod_path(current_user)
+            render 'new'
         end
     end
     def show

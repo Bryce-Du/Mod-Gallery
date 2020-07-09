@@ -7,4 +7,9 @@ class Mod < ApplicationRecord
   has_many :mods_categories
   has_many :categories, through: :mods_categories
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
+
+  validates :name, presence: true, uniqueness: true
+  validates :game, presence: true
+  validates :description, presence: true
+  validates 
 end
