@@ -1,5 +1,6 @@
 class ModsController < ApplicationController
     before_action :set_mod, only: [:show]
+    before_action :require_login, only: [:create, :new, :download]
     def new
         @mod = Mod.new
     end
@@ -18,6 +19,15 @@ class ModsController < ApplicationController
             @mods = Mod.where(game_id: params[:game_id])
         end
     end
+    def download
+        ud = UsersDownload.new(download_params)
+        if ud.save
+            flash[:notice] = "Download Successful."
+            redirect_to mod_path(set_mod)
+        else
+            byebug
+        end
+    end
 
     private
     def set_mod
@@ -31,5 +41,8 @@ class ModsController < ApplicationController
             :description,
             category_ids: []
         )
+    end
+    def download_params
+        params.require(:users_download).permit(:mod_id, :user_id)
     end
 end

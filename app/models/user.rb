@@ -18,4 +18,7 @@ class User < ApplicationRecord
             @user = User.create(username: auth_hash[:uid], password: SecureRandom.hex)
         end
     end
+    def downloaded(mod)
+        UsersDownload.where(mod_id: mod.id).where(user_id: self.id)
+    end
 end

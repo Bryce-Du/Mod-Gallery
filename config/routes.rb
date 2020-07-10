@@ -19,4 +19,5 @@ Rails.application.routes.draw do
     resources :categories
     resources :mods, only: [:index]
   end
+  post "/mod/:id/download", to: "mods#download", as: "download"
 end

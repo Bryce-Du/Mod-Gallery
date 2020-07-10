@@ -7,7 +7,7 @@ class Mod < ApplicationRecord
   has_many :mods_categories
   has_many :categories, through: :mods_categories
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
-
+ 
   validates :name, presence: true, uniqueness: {scope: :game}
   validates :game_id, presence: true
   validates :description, presence: true
@@ -18,5 +18,8 @@ class Mod < ApplicationRecord
   end
   def download_count
     downloads.count
+  end
+  def endorsements
+    users_downloads.endorsed.count
   end
 end

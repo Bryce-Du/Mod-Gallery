@@ -2,11 +2,22 @@
 <h4><%= @mod.game.name %></h4>
 <h4>Created by:  <%= @mod.creator.username %></h4>
 <h4>Categories:</h4>
-<ul>
+<div class="row px-5">
 <% @mod.categories.each do |category| %>
-    <li><%= category.name %></li>
+    <h6 class="px-2"><%= category.name %></h6>
 <% end %>
-</ul>
-<h4>Downloads:  <%= @mod.downloads.count %></h4>
+</div>
+<p>Downloads:  <%= @mod.download_count %> | Endorsements:  <%= @mod.endorsements %></p>
 <h4>Description:</h4>
 <p><%= @mod.description %></p>
+<%= flash[:notice] %>
+<% download = current_user.downloaded(@mod) %>
+<% if download.empty? %>    
+    <%= bootstrap_form_with(model: UsersDownload.new, url: download_path(@mod), method: "post") do |f| %>
+        <%=f.hidden_field :mod_id, value: @mod.id %>
+        <%=f.hidden_field :user_id, value: current_user.id %>
+        <%=f.submit "Download"%>
+    <%end%>
+<%else%>
+    <p>You downloaded this mod on: <%= download.first.created_at %></p>
+<%end%>
