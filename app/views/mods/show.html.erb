@@ -10,14 +10,5 @@
 <p>Downloads:  <%= @mod.download_count %> | Endorsements:  <%= @mod.endorsements %></p>
 <h4>Description:</h4>
 <p><%= @mod.description %></p>
-<%= flash[:notice] %>
-<% download = current_user.downloaded(@mod) %>
-<% if download.empty? %>    
-    <%= bootstrap_form_with(model: UsersDownload.new, url: download_path(@mod), method: "post") do |f| %>
-        <%=f.hidden_field :mod_id, value: @mod.id %>
-        <%=f.hidden_field :user_id, value: current_user.id %>
-        <%=f.submit "Download"%>
-    <%end%>
-<%else%>
-    <p>You downloaded this mod on: <%= download.first.created_at %></p>
-<%end%>
+
+<%= render partial: "controls", locals: {mod: @mod} %>

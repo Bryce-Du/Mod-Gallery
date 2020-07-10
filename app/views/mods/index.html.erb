@@ -1,6 +1,6 @@
 <div class="card-deck">
 <% @mods.each do |mod| %>
-    <a class="text-dark py-2" href=<%= mod_path(mod) %>>
+    <a class="text-dark py-2" href=<%= game_mod_path(mod.game, mod) %>>
         <div class="card" style="width: 18rem;">
             <div class="card-header bg-secondary"></div>
             <div class="card-body">

@@ -1,11 +1,11 @@
 class Mod < ApplicationRecord
   belongs_to :game
-  has_many :comments
-  has_many :commenters, through: :comments, source: :user
-  has_many :users_downloads
-  has_many :downloads, through: :users_downloads, source: :user
-  has_many :mods_categories
-  has_many :categories, through: :mods_categories
+  has_many :comments, :dependent => :destroy
+  has_many :commenters, through: :comments, source: :user, :dependent => :destroy
+  has_many :users_downloads, :dependent => :destroy
+  has_many :downloads, through: :users_downloads, source: :user, :dependent => :destroy
+  has_many :mods_categories, :dependent => :destroy
+  has_many :categories, through: :mods_categories, :dependent => :destroy
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
  
   validates :name, presence: true, uniqueness: {scope: :game}

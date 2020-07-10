@@ -1,0 +1,26 @@
+<%= flash[:notice] %>
+<% download = current_user.downloaded(mod) %>
+<% if download.empty? %>    
+    <%= bootstrap_form_with(model: UsersDownload.new, url: download_path(mod), method: "post") do |f| %>
+        <%=f.hidden_field :mod_id, value: mod.id %>
+        <%=f.hidden_field :user_id, value: current_user.id %>
+        <%=f.hidden_field :endorsed, value: false %>
+        <%=f.submit "Download"%>
+    <%end%>
+<%else%>
+    <p>You downloaded this mod on: <%= download.first.created_at %></p>
+    <% unless download.first.endorsed  %>
+        <%= bootstrap_form_with(model: download, url: endorse_path(mod), method: "patch") do |f| %>
+            <%=f.hidden_field :mod_id, value: mod.id %>
+            <%=f.hidden_field :user_id, value: current_user.id %>
+            <%=f.hidden_field :endorsed, value: true %>
+            <%=f.submit "Endorse"%>
+        <% end %>
+    <% else %>
+        <p>Thanks for endorsing!</p>
+    <% end %>
+<% end %>
+
+<% if current_user.id == mod.creator_id %>
+    <a class="btn btn-secondary" href=<%= edit_user_mod_path(current_user) %>>Edit</a> | <a class="btn btn-secondary" href=<%= user_mod_path(current_user)%> data-method="delete">Delete</a>
+<% end %>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root "sessions#main"
+  get "/about", to: "static#about"
   # Session Routes
   get "/login", to: "sessions#new", as: "login"
   post "/login", to: "sessions#create"
@@ -12,12 +13,12 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :edit, :update, :destroy]
   # Resources
   resources :users do
-    resources :mods, only: [:new, :create]
+    resources :mods, only: [:new, :create, :edit, :update, :show, :destroy]
   end
-  resources :mods, only: [:show]
   resources :games do
     resources :categories
-    resources :mods, only: [:index]
+    resources :mods, only: [:index, :show]
   end
   post "/mod/:id/download", to: "mods#download", as: "download"
+  patch "/mod/:id/endorse", to: "mods#endorse", as: "endorse"
 end
