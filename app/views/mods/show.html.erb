@@ -1,1 +1,12 @@
 <h1><%= @mod.name %></h1>
+<h4><%= @mod.game.name %></h4>
+<h4>Created by:  <%= @mod.creator.username %></h4>
+<h4>Categories:</h4>
+<ul>
+<% @mod.categories.each do |category| %>
+    <li><%= category.name %></li>
+<% end %>
+</ul>
+<h4>Downloads:  <%= @mod.downloads.count %></h4>
+<h4>Description:</h4>
+<p><%= @mod.description %></p>

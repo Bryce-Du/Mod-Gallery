@@ -13,6 +13,9 @@ class ModsController < ApplicationController
     end
     def show
     end
+    def index
+        
+    end
 
     private
     def set_mod
