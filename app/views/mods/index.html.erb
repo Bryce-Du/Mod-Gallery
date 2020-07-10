@@ -1,0 +1,16 @@
+<div class="card-deck">
+<% @mods.each do |mod| %>
+    <a class="text-dark py-2" href=<%= mod_path(mod) %>>
+        <div class="card" style="width: 18rem;">
+            <div class="card-header bg-secondary"></div>
+            <div class="card-body">
+                <h5 class="card-title"><%= mod.name %></h5>
+                <p class="card-text"><%= mod.truncated_description %></p>
+            </div>
+            <div class="card-footer">
+                <small><span class="glyphicon glyphicon-download-alt"></span><%= mod.download_count %></small>
+            </div>
+        </div>
+    </a>
+<% end %>
+</div>

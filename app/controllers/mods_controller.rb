@@ -6,7 +6,7 @@ class ModsController < ApplicationController
     def create
         @mod = Mod.new(mod_params)
         if @mod.save
-            redirect_to user_mod_path(@mod.creator_id, @mod)
+            redirect_to mod_path(@mod)
         else
             render 'new'
         end
@@ -14,7 +14,9 @@ class ModsController < ApplicationController
     def show
     end
     def index
-        
+        if params[:game_id]
+            @mods = Mod.where(game_id: params[:game_id])
+        end
     end
 
     private

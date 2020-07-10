@@ -5,8 +5,9 @@
         <% if !!selected_game %>
             
             <li class="nav-item"><h4 class="text-dark">Browse Mods for <%= selected_game_name %></h4></li>
-            <li class="nav-item"><h6><a class="text-white" href=<%= "/games/#{selected_game.id}" %>>Browse all</a></h6></li>
-            <li class="nav-item"><h6><a class="text-white" href=<%= "/games/#{selected_game.id}/categories" %>>Browse by Category</a></h6></li>
+            <li class="nav-item"><h6><a class="text-white" href=<%= game_path(selected_game) %>>Game Dashboard</a></h6></li>
+            <li class="nav-item"><h6><a class="text-white" href=<%= game_mods_path(selected_game) %>>Browse all</a></h6></li>
+            <li class="nav-item"><h6><a class="text-white" href=<%= game_categories_path(selected_game) %>>Browse by Category</a></h6></li>
         <% end %>
         <% if current_user %>
             <li class="nav-item"><h4 class="text-dark"><%= current_user.username %></h4></li>

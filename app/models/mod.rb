@@ -12,4 +12,11 @@ class Mod < ApplicationRecord
   validates :game_id, presence: true
   validates :description, presence: true
   validates :category_ids, presence: {message: "Must select at least one Category."}
+
+  def truncated_description
+    self.description.truncate(30)  
+  end
+  def download_count
+    downloads.count
+  end
 end
