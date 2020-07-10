@@ -1,9 +1,18 @@
-<h1>Profile</h1>
-<h5>Username: <%= @user.username %></h5>
-<h5>Created Mods:</h5>
-<ul>
-    <% @user.creations.each do |mod| %>
-        <li><%= link_to "#{mod.name}", user_mod_path(@user, mod)%> | Downloads: <%= mod.download_count %> | Endorsements: <%= mod.endorsements %></li>
-    <% end %>
-</ul>
-<a class="btn btn-secondary" href= <%= new_user_mod_path(user_id: current_user.id) %>>Add New Mod</a>
+<div class="row">
+    <div class="col-6">
+        <h1>Profile</h1>
+        <h5>Username: <%= @user.username %></h5>
+        <% if @user == current_user %>
+            <a class="btn btn-secondary" href= <%= edit_user_path %>>Change Username</a>
+        <% end %>
+    </div>
+    <div class="col-6 border-left">
+        <h5>Created Mods:</h5>
+        <ul>
+            <% @user.creations.each do |mod| %>
+                <li><%= link_to "#{mod.name}", user_mod_path(@user, mod)%> | Downloads: <%= mod.download_count %> | Endorsements: <%= mod.endorsements %></li>
+            <% end %>
+        </ul>
+        <a class="btn btn-secondary" href= <%= new_user_mod_path(current_user) %>>Add New Mod</a>
+    </div>
+</div>

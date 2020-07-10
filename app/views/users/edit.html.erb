@@ -1,0 +1,4 @@
+<%= bootstrap_form_with(model: @user, local: true) do |f| %>
+    <div class="row"><%= f.text_field :username %></div>
+    <%= f.submit %>
+<% end %>

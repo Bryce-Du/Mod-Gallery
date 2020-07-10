@@ -7,9 +7,10 @@ class User < ApplicationRecord
     has_secure_password
 
     validates :username, presence: true
-    validates :password, presence: true
-    validates :password, length: {in: 8..32}
-    validates :password, confirmation: { case_sensitive: true }
+    validates :username, uniqueness: true
+    validates :password, presence: true, on: :create
+    validates :password, length: {in: 8..32}, on: :create
+    validates :password, confirmation: { case_sensitive: true }, on: :create
 
     def self.find_or_create_by_auth(auth_hash)
         if @user = User.find_by(username: auth_hash[:uid])
