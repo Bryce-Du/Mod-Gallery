@@ -1,16 +1,15 @@
-
-<%= bootstrap_form_with(model: @mod, local: true, url: user_mod_path) do |f| %>
-    <div class="row">
-        <div class="col-2">
-            <div class="row"><%= f.text_field :name %></div>
-            <div class="row">
-                <%= f.text_field :creator, value: current_user.username, readonly: true, disabled: true%>
-                <%= f.hidden_field :creator_id, value: current_user.id %>
-            </div>
-            <div class="row"><%= f.collection_select :game_id, Game.all, :id, :name, prompt: "Select Game"%></div>
+<div class="row justify-content-start">
+    <div class="col-2 px-2">
+        <div class="row"><%= f.text_field :name %></div>
+        <div class="row">
+            <%= f.text_field :creator, value: current_user.username, readonly: true, disabled: true%>
+            <%= f.hidden_field :creator_id, value: current_user.id %>
         </div>
-        <div class="row"><%= f.collection_check_boxes :category_ids, Category.all, :id, :name, label: "Select all Categories that apply:" %></div>
+        <div class="row"><%= f.collection_select :game_id, Game.all, :id, :name, prompt: "Select Game"%></div>
     </div>
-    <div class="row"><div class="col-6"><%= f.text_area :description %></div></div>
-    <%= f.submit %>
-<% end %>
+    <div class="col pl-5">    
+        <div class="row pl-5"><%= f.collection_check_boxes :category_ids, Category.all, :id, :name, label: "Select all Categories that apply:" %></div>
+    </div>
+</div>
+<div class="row"><div class="col-6"><%= f.text_area :description %></div></div>
+<%= f.submit %>

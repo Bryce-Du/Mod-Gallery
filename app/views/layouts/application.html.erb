@@ -16,11 +16,7 @@
       <div class="row flex-grow-1 overflow-hidden">
           <%= render "sidebar" %>
           <div class='col mh-100 overflow-auto'>
-              <div class='row flex-grow-1'>
-                  <div class="col mh-100 overflow-auto py-5">
-                    <%= yield %>
-                  </div>
-              </div>
+            <%= yield %>
           </div>
       </div>
       <div class="row flex-shrink-0 bg-light text-center">

@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :set_user, only: [:show, :edit, :update]
+    before_action :set_user, only: [:show, :destroy]
     def new
         @user = User.new
     end
@@ -14,16 +14,10 @@ class UsersController < ApplicationController
     end
     def show
     end
-    def edit
-    end
-    def update
-        if @user.update(username: user_params[:username])
-            redirect_to user_path
-        else
-            render 'edit'
-        end
-    end
     def destroy
+        User.destroy(@user.id)
+        session.delete(:user_id)
+        redirect_to root_path
     end
 
     private

@@ -1,5 +1,7 @@
 <!-- Mods will only ever be created by a logged in user, who is automatically assigned as creator -->
 <div class="ml-5 mt-5">
     <h1>Create a New Mod:</h1>
-    <%= render partial: "form", mod: @mod %>
+    <%= bootstrap_form_with(model: @mod, local: true, url: new_user_mod_path) do |f| %>
+        <%= render partial: 'form', locals: {f: f} %>
+    <% end %>
 </div>

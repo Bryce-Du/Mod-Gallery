@@ -8,15 +8,15 @@ class User < ApplicationRecord
 
     validates :username, presence: true
     validates :username, uniqueness: true
-    validates :password, presence: true, on: :create
-    validates :password, length: {in: 8..32}, on: :create
-    validates :password, confirmation: { case_sensitive: true }, on: :create
+    validates :password, presence: true
+    validates :password, length: {in: 8..32}
+    validates :password, confirmation: { case_sensitive: true }
 
     def self.find_or_create_by_auth(auth_hash)
-        if @user = User.find_by(username: auth_hash[:uid])
+        if @user = User.find_by(username: auth_hash[:info][:nickname])
             @user
         else
-            @user = User.create(username: auth_hash[:uid], password: SecureRandom.hex)
+            @user = User.create(username: auth_hash[:info][:nickname], password: SecureRandom.hex)
         end
     end
     def downloaded(mod)

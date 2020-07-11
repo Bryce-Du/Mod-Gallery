@@ -1,12 +1,12 @@
-<div class="row">
-    <div class="col-6">
+<div class="row pt-5 pl-5">
+    <div class="col">
         <h1>Profile</h1>
         <h5>Username: <%= @user.username %></h5>
-        <% if @user == current_user %>
-            <a class="btn btn-secondary" href= <%= edit_user_path %>>Change Username</a>
+        <% if current_user == @user %>
+            <a class="btn btn-secondary" href=<%= user_path(current_user)%> data-method="delete">Delete</a>
         <% end %>
     </div>
-    <div class="col-6 border-left">
+    <div class="col">
         <h5>Created Mods:</h5>
         <ul>
             <% @user.creations.each do |mod| %>
@@ -16,3 +16,4 @@
         <a class="btn btn-secondary" href= <%= new_user_mod_path(current_user) %>>Add New Mod</a>
     </div>
 </div>
+
