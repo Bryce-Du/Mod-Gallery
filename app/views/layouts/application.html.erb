@@ -14,12 +14,12 @@
     <div class="container-fluid d-flex flex-column vh-100 mx-0 overflow-hidden">
       <%= render "navbar" %>
       <div class="row flex-grow-1 overflow-hidden">
-          <%= render "sidebar" %>
-          <div class='col mh-100 overflow-auto'>
-            <%= yield %>
-          </div>
+        <%= render "sidebar" %>
+        <div class='col mh-100 overflow-auto text-white' style="background-image: url(<%= asset_path 'background' %>); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+          <%= yield %>
+        </div>
       </div>
-      <div class="row flex-shrink-0 bg-light text-center">
+      <div class="row flex-shrink-0 bg-dark text-white text-center">
           <div class="col-12 py-1">
               <p>Created by Bryce Dumas for Flatiron School.</p>
           </div>
@@ -27,3 +27,5 @@
     </div>
   </body>
 </html>
+
+<div class="view" style="background-image: url(<%= asset_path 'background' %>); background-repeat: no-repeat; background-size: cover; background-position: center center;"></div>
