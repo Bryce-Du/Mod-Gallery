@@ -15,7 +15,7 @@
       <%= render "navbar" %>
       <div class="row flex-grow-1 overflow-hidden">
         <%= render "sidebar" %>
-        <div class='col mh-100 overflow-auto text-white' style="background-image: url(<%= asset_path 'background' %>); background-repeat: no-repeat; background-size: cover; background-position: center center;">
+        <div class='col mh-100 overflow-auto' style="background-image: url(<%= asset_path 'background' %>); background-repeat: no-repeat; background-size: cover; background-position: center center;">
           <%= yield %>
         </div>
       </div>
