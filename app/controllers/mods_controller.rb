@@ -1,5 +1,5 @@
 class ModsController < ApplicationController
-    before_action :set_mod, only: [:show, :edit, :update, :destroy]
+    before_action :set_mod, only: [:show, :edit, :update, :destroy, :download, :endorse]
     before_action :require_login, only: [:create, :new, :download, :edit, :update, :endorse, :destroy]
     def new
         @mod = Mod.new
@@ -44,7 +44,7 @@ class ModsController < ApplicationController
         else
             flash[:notice] = "An error occurred."
         end
-        redirect_to mod_path(set_mod)
+        redirect_to game_mod_path(@mod.game_id, @mod)
     end
     def endorse
         ud = UsersDownload.where(mod_id: download_params[:mod_id]).where(user_id: download_params[:user_id]).first
@@ -54,7 +54,7 @@ class ModsController < ApplicationController
         else
             flash[:notice] = "An error occurred."
         end
-        redirect_to mod_path(set_mod)
+        redirect_to game_mod_path(@mod.game_id, @mod)
     end
 
     private

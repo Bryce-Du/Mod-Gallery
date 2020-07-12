@@ -3,7 +3,7 @@
     <h5><%= comment.commenter %>:</h5>
     <small>Posted on: <%= comment.created_at %></small>
     <p class="bg-secondary rounded pl-2 pt-1"><%= comment.content %></p>
-    <% if current_user = comment.user %>
+    <% if current_user == comment.user %>
         <a class="btn btn-danger px-1 py-0" href=<%= user_mod_comment_path(current_user, mod, comment)%> data-method="delete"><small>X</small></a>
     <% end %>
 <% end %>
