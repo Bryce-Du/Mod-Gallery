@@ -12,8 +12,9 @@
         <p>Downloads:  <%= @mod.download_count %> | Endorsements:  <%= @mod.endorsements %></p>
         <h4>Description:</h4>
         <p><%= @mod.description %></p>
-
-        <%= render partial: "controls", locals: {mod: @mod} %>
+        <% if current_user %>
+            <%= render partial: "controls", locals: {mod: @mod} %>
+        <% end %>
     </div>
     <div class="col-2"></div>
     <div class="col-4 pt-2">

@@ -7,6 +7,7 @@
         <a class="btn btn-danger px-1 py-0" href=<%= user_mod_comment_path(current_user, mod, comment)%> data-method="delete"><small>X</small></a>
     <% end %>
 <% end %>
+<% if current_user %>
 <%= bootstrap_form_with(scope: "comment", url: user_mod_comments_path(current_user, mod)) do |f| %>
     <%= f.text_area :content, label: "Add a comment on this mod:", placeholder: "Constructive Feedback Here" %>
     <%= f.hidden_field :user_id, value: current_user.id %>
@@ -14,3 +15,4 @@
     <%= f.submit "Post" %>
 <% end %>
 <%= flash[:alert] %>
+<% end %>
