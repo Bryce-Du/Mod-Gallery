@@ -1,6 +1,16 @@
-<h1>Browse Games</h1>
-<% @games.each do |game| %>
-    <div class="row"><div class="col-3"><h5><a class="text-white" href=<%= game_path(game) %>><%= game.name %></a></h5></div>
-    <div class="col-2">Mods: <%= game.mod_count %></div></div>
-<% end %>
+<div class="card-deck">
+    <% @games.each do |game| %>
+        <a class="text-dark" href=<%= game_path(game) %>>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header bg-secondary"></div>
+                <div class="card-body">
+                    <h5 class="card-title"><%= game.name %></h5>
+                </div>
+                <div class="card-footer">
+                    <small>Mods: <%= game.mod_count %></small>
+                </div>
+            </div>
+        </a>
+    <% end %>
+</div>
 <a class="btn btn-secondary" href= <%= new_game_path %>>Add Game</a>

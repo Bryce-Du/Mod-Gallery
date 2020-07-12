@@ -7,7 +7,7 @@ class ModsController < ApplicationController
     def create
         @mod = Mod.new(mod_params)
         if @mod.save
-            redirect_to user_mod_path(@mod) 
+            redirect_to user_mod_path(@mod.creator_id, @mod) 
         else
             render 'new'
         end
