@@ -20,7 +20,7 @@
         <p>Thanks for endorsing!</p>
     <% end %>
 <% end %>
-
+<br>
 <% if current_user.id == mod.creator_id %>
     <a class="btn btn-secondary" href=<%= edit_user_mod_path(current_user) %>>Edit</a> | <a class="btn btn-secondary" href=<%= user_mod_path(current_user)%> data-method="delete">Delete</a>
 <% end %>

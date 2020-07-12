@@ -1,3 +1,21 @@
 <h1><%= @game.name %></h1>
-<h3>--insert stats or such here--</h3>
+<h5>Total Mods: <%= @game.mod_count %></h5>
+<h5>Total Downloads: <%= @game.total_downloads %></h5>
+<h3>Latest Mods:</h3>
+<div class="card-deck">
+    <% @game.latest.each do |mod| %>
+        <a class="text-dark py-2" href=<%= game_mod_path(mod.game, mod) %>>
+            <div class="card" style="width: 18rem;">
+                <div class="card-header bg-secondary"></div>
+                <div class="card-body">
+                    <h5 class="card-title"><%= mod.name %></h5>
+                    <p class="card-text"><%= mod.truncated_description %></p>
+                </div>
+                <div class="card-footer">
+                    <small><%= mod.download_count %> downloads | <%= mod.endorsements %> endorsements</small>
+                </div>
+            </div>
+        </a>
+    <% end %>
+</div>
 <a class="btn btn-secondary" href=<%= game_mods_path(@game) %>>Browse All Mods</a> 

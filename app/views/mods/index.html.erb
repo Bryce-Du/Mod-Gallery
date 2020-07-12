@@ -1,3 +1,4 @@
+<h1>Browsing <%= @category.name if @category %> Mods for <%= @game.name if @game %></h1>
 <div class="card-deck">
 <% @mods.each do |mod| %>
     <a class="text-dark py-2" href=<%= game_mod_path(mod.game, mod) %>>

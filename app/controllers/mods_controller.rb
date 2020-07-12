@@ -7,7 +7,7 @@ class ModsController < ApplicationController
     def create
         @mod = Mod.new(mod_params)
         if @mod.save
-            redirect_to mod_path(@mod)
+            redirect_to user_mod_path(@mod) 
         else
             render 'new'
         end
@@ -17,6 +17,11 @@ class ModsController < ApplicationController
     def index
         if params[:game_id]
             @mods = Mod.where(game_id: params[:game_id])
+            @game = Game.find(params[:game_id])
+            if params[:category_id]
+                @mods = Mod.joins(:categories).merge(Category.where(id: params[:category_id])).where(game_id: params[:game_id])
+                @category = Category.find(params[:category_id])
+            end
         end
     end
     def edit

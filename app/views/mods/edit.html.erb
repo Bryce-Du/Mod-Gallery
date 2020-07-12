@@ -1,6 +1,6 @@
 <div class="ml-5 mt-5">
     <h1>Edit Mod:</h1>
-    <%= bootstrap_form_with(model: @mod, local: true, url: edit_user_mod_path) do |f| %>
+    <%= bootstrap_form_with(model: @mod, local: true, url: user_mod_path, method: "patch") do |f| %>
         <%= render partial: 'form', locals: {f: f} %>
     <% end %>
 </div>

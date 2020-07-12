@@ -1,14 +1,23 @@
-<h1><%= @mod.name %></h1>
-<h4><%= @mod.game.name %></h4>
-<h4>Created by:  <%= @mod.creator.username %></h4>
-<h4>Categories:</h4>
-<div class="row px-5">
-<% @mod.categories.each do |category| %>
-    <h6 class="px-2"><%= category.name %></h6>
-<% end %>
-</div>
-<p>Downloads:  <%= @mod.download_count %> | Endorsements:  <%= @mod.endorsements %></p>
-<h4>Description:</h4>
-<p><%= @mod.description %></p>
+<div class="row">
+    <div class="col-2 pt-2 pl-3">
+        <h1><%= @mod.name %></h1>
+        <h4><%= @mod.game.name %></h4>
+        <h4>Created by:  <%= @mod.creator.username %></h4>
+        <h4>Categories:</h4>
+        <div class="row px-5">
+            <% @mod.categories.each do |category| %>
+                <a class="px-1 py-1 bg-secondary rounded text-white" href=<%= game_category_mods_path(@mod.game, category) %>><%= category.name %></a>
+            <% end %>
+        </div>
+        <p>Downloads:  <%= @mod.download_count %> | Endorsements:  <%= @mod.endorsements %></p>
+        <h4>Description:</h4>
+        <p><%= @mod.description %></p>
 
-<%= render partial: "controls", locals: {mod: @mod} %>
+        <%= render partial: "controls", locals: {mod: @mod} %>
+    </div>
+    <div class="col-2"></div>
+    <div class="col-4 pt-2">
+        <%= render partial: "comments", locals: {mod: @mod} %>
+    </div>
+    <div class="col-4"></div>
+</div>

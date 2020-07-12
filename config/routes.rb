@@ -14,9 +14,15 @@ Rails.application.routes.draw do
   # Resources
   resources :users do
     resources :mods, only: [:new, :create, :edit, :update, :show, :destroy]
+    resources :mods do
+      resources :comments, only: [:create, :update, :destroy]
+    end
   end
   resources :games do
-    resources :categories
+    resources :categories, only: :index
+    resources :categories do
+      resources :mods, only: :index
+    end
     resources :mods, only: [:index, :show]
   end
   post "/mod/:id/download", to: "mods#download", as: "download"

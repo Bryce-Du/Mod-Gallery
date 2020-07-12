@@ -1,0 +1,16 @@
+<h2>Comments:</h2>
+<% mod.comments.each do |comment| %>
+    <h5><%= comment.commenter %>:</h5>
+    <small>Posted on: <%= comment.created_at %></small>
+    <p class="bg-secondary rounded pl-2 pt-1"><%= comment.content %></p>
+    <% if current_user = comment.user %>
+        <a class="btn btn-danger px-1 py-0" href=<%= user_mod_comment_path(current_user, mod, comment)%> data-method="delete"><small>X</small></a>
+    <% end %>
+<% end %>
+<%= bootstrap_form_with(scope: "comment", url: user_mod_comments_path(current_user, mod)) do |f| %>
+    <%= f.text_area :content, label: "Add a comment on this mod:", placeholder: "Constructive Feedback Here" %>
+    <%= f.hidden_field :user_id, value: current_user.id %>
+    <%= f.hidden_field :mod_id, value: mod.id %>
+    <%= f.submit "Post" %>
+<% end %>
+<%= flash[:alert] %>

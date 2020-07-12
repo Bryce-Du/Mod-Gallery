@@ -1,5 +1,6 @@
 <h1>Browse Games</h1>
 <% @games.each do |game| %>
-    <div class="row"><div class="col-3"><h5><a class="text-white" href=<%= game_path(game) %>><%= game.name %></a></h5></div><div class="col-2">Mods: <%= game.mod_count %></div></div>
+    <div class="row"><div class="col-3"><h5><a class="text-white" href=<%= game_path(game) %>><%= game.name %></a></h5></div>
+    <div class="col-2">Mods: <%= game.mod_count %></div></div>
 <% end %>
 <a class="btn btn-secondary" href= <%= new_game_path %>>Add Game</a>
