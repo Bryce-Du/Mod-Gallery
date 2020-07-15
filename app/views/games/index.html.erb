@@ -14,3 +14,8 @@
     <% end %>
 </div>
 <a class="btn btn-secondary" href= <%= new_game_path %>>Add Game</a>
+
+<%= form_tag "/search", method: "get" do %>
+    <%= text_field_tag :search %>
+    <%= submit_tag "Search" %>
+<% end %>

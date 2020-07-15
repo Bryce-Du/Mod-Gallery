@@ -1,6 +1,7 @@
 class Game < ApplicationRecord
     has_many :mods
 
+    scope :search, ->(search_term){where("name like ?", "%#{search_term}%")}
     validates :name, uniqueness: true, presence: true
 
     def mod_count

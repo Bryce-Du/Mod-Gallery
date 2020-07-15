@@ -14,9 +14,7 @@ Rails.application.routes.draw do
   # Resources
   resources :users do
     resources :mods, only: [:new, :create, :edit, :update, :show, :destroy]
-    resources :mods do
-      resources :comments, only: [:create, :update, :destroy]
-    end
+    resources :comments, only: [:create, :update, :destroy]
   end
   resources :games do
     resources :categories, only: :index
@@ -27,4 +25,6 @@ Rails.application.routes.draw do
   end
   post "/mod/:id/download", to: "mods#download", as: "download"
   patch "/mod/:id/endorse", to: "mods#endorse", as: "endorse"
+
+  get "/search", to: "games#search"
 end

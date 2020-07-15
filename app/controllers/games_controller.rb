@@ -18,6 +18,11 @@ class GamesController < ApplicationController
     def show
     end
 
+    def search
+        @games = Game.search(params[:search])
+        render "index"
+    end
+
 
     private
     def set_game

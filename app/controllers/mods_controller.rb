@@ -16,11 +16,12 @@ class ModsController < ApplicationController
     end
     def index
         if params[:game_id]
-            @mods = Mod.where(game_id: params[:game_id])
             @game = Game.find(params[:game_id])
+            @mods = @game.mods
             if params[:category_id]
                 @mods = Mod.joins(:categories).merge(Category.where(id: params[:category_id])).where(game_id: params[:game_id])
                 @category = Category.find(params[:category_id])
+
             end
         end
     end
@@ -47,7 +48,7 @@ class ModsController < ApplicationController
         redirect_to game_mod_path(@mod.game_id, @mod)
     end
     def endorse
-        ud = UsersDownload.where(mod_id: download_params[:mod_id]).where(user_id: download_params[:user_id]).first
+        ud = UsersDownload.find_by(mod_id: download_params[:mod_id], user_id: download_params[:user_id])
         if !ud.endorsed
             ud.endorsed = true
             ud.save

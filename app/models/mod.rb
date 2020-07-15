@@ -7,7 +7,7 @@ class Mod < ApplicationRecord
   has_many :mods_categories, :dependent => :destroy
   has_many :categories, through: :mods_categories, :dependent => :destroy
   belongs_to :creator, class_name: "User", foreign_key: "creator_id"
- 
+   
   validates :name, presence: true, uniqueness: {scope: :game}
   validates :game_id, presence: true
   validates :description, presence: true
